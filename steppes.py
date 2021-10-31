@@ -26,6 +26,7 @@ try:
         t = round((x - x_we_need[0]) / h, 3)
         q = round((x - x_we_need[-1]) / h, 3)
         print(x_we_need, y_we_need, x_all, y_all, x, h, t, q, k, sep='\n')
+        mean = 't'
 except IndexError:
     """
         Если x надо определить через q
@@ -36,6 +37,7 @@ except IndexError:
     y_we_need.append(y_all[-1])
     t = round((x - x_we_need[0]) / h, 3)
     q = round((x - x_we_need[-1]) / h, 3)
+    mean = 'q'
     print(x_we_need, y_we_need, x_all, y_all, x, h, t, q, k, sep='\n')
 
 
@@ -65,3 +67,27 @@ for i in kes:
 """
 
 
+def factorial(f):
+    fac = 1
+    for j in range(f):
+        fac *= j+1
+        return fac
+
+
+if mean == 't':
+    equal = y_we_need[0]
+    for i in range(k):
+        tes = 1
+        for j in range(i + 1):
+            tes *= t - j
+        equal += tes*kes[i][0]/factorial(i+1)
+    print(f'f({x}) = ', equal)
+
+elif mean == 'q':
+    equal = y_we_need[-1]
+    for i in range(k):
+        qes = 1
+        for j in range(i + 1):
+            qes *= q + j
+        equal += qes*kes[i][-1]/factorial(i+1)
+    print(f'f({x}) = ', equal)
