@@ -1,3 +1,4 @@
+from math import sin
 ques = input('Использовать функцию синуса (sin) или ввести новую (new) ? - ')
 if ques == 'sin':
     x_all = [5.6, 5.8, 6, 6.2, 6.4, 6.6, 6.8, 7, 7.2, 7.4]
@@ -86,7 +87,6 @@ if mean == 't':
         for j in range(i + 1):
             tes *= t - j
         equal += tes*kes[i][0]/factorial(i+1)
-    print(f'f({x}) = ', equal)
 
 elif mean == 'q':
     equal = y_we_need[-1]
@@ -95,4 +95,5 @@ elif mean == 'q':
         for j in range(i + 1):
             qes *= q + j
         equal += qes*kes[i][-1]/factorial(i+1)
-    print(f'f({x}) = ', equal)
+
+print(f' sin({x}) = ', x * sin(x), '\n', f'f({x}) = ', equal, '\n', 'Погрешность: ', abs(x * sin(x) - equal))
